@@ -1,0 +1,172 @@
+.aside {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  background-color: #1E213A;
+  position: relative;
+}
+
+.aside-overlay {
+  position: absolute;
+  left: -500px;
+  right: 500px;
+  bottom: 0;
+  top: 0;
+  background-color: #1E213A;
+  z-index: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+.aside-overlay.active {
+  right: 0;
+  left: 0;
+}
+
+.content-overlay {
+  padding: 10px 45px;
+  margin: 0 auto;
+}
+
+.button-close {
+  display: flex;
+  justify-content: flex-end;
+  color: #E7E7EB;
+  padding-bottom: 9%;
+}
+
+.button-close svg {
+  cursor: pointer;
+}
+
+.content-search {
+  display: flex;
+}
+
+.input-search {
+  width: calc(100% - 75px);
+  padding: 8px;
+  margin-right: 6px;
+  border: 1px solid #E7E7EB;
+  background-color: #1E213A;
+  color: #E7E7EB;
+  font-size: 16px;
+}
+
+.button-search {
+  padding: 9px;
+  background-color: #3C47E9;
+  color: #E7E7EB;
+  font-size: 16px;
+  border: none;
+  transition: all 0.5s ease-in-out;
+}
+
+.button-search:hover {
+  background-color:#c7c7fb;;
+  color:#3C47E9;
+}
+
+.content-picture-weather-today {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../assets/images/Cloud-background.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  min-height: 380px;
+  width: 100%;
+}
+
+svg {
+  width: 18px;
+}
+
+.content-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  width: 100%;
+}
+
+.button {
+  background-color: #6E707A;
+  color: #E7E7EB;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: all 0.5s ease-in-out;
+}
+
+.button-round {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  border-radius: 50%; 
+  font-size: 18px;
+  box-sizing: border-box;
+}
+
+.button.active, button:hover {
+  background-color: #E7E7EB;
+  color: #6E707A;
+}
+
+.content-info-weather-today {
+  width: 100%;
+} 
+
+.content-info-weather-today p:last-child{
+  padding-top: 5%;
+} 
+
+.content-info-weather-today .temperature {
+  font-size: 140px;
+  line-height: 140px;
+  color: #E7E7EB;
+  margin: 0;
+  padding-bottom: 10%;
+}
+
+.content-info-weather-today .measurement {
+  font-size: 60px;
+  color: #A09FB1;
+}
+
+.content-info-weather-today .weather {
+  font-size: 36px;
+  color: #A09FB1;
+  padding-bottom: 15%;
+}
+
+.content-info-weather-today p {
+  font-size: 18px;
+  color: #A09FB1;
+  text-align: center;
+}
+
+@media screen and (max-width: 1180px) {
+  .aside-overlay {
+    left: -100%;
+    right: 100%;
+  } 
+
+  .content-info-weather-today .temperature{
+    padding-bottom: 20px;
+  }
+
+  .content-info-weather-today .weather{
+    padding-bottom: 40px;
+  } 
+
+  .content-info-weather-today p:last-child {
+    padding: 20px 0 60px;
+  }
+}

@@ -36,3 +36,203 @@
     transform: rotate(360deg);
   }
 }
+
+.App {
+  display: flex;
+  height: 100vh;
+  font-family: 'Raleway', sans-serif;
+}
+
+.aside {
+  width: 30%;
+}
+
+.content {
+  width: 70%;
+  background-color: #100E1D;
+}
+
+.content-center {
+  max-width: 705px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+p {
+  font-size: 16px;
+  color: #E7E7EB;
+}
+
+.content-measurement {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 8%;
+}
+
+.content-measurement button:first-child {
+  margin-right: 10px;
+}
+
+progress {
+  -webkit-appearance: none;
+  height: 8px;
+  width: 100%;
+  max-width: 225px;
+  position: relative;
+}
+
+::-webkit-progress-bar {
+  background-color:#E7E7EB;
+  border-radius: 8px;
+}
+
+::-webkit-progress-value {
+  background-color: #FFEC65;
+  border-radius: 8px;
+}
+
+progress:before {
+  content: '0';
+  position: absolute;
+  left: 0;
+  top: -16px;
+  color: #A09FB1;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+progress:after {
+  content: '100';
+  position: absolute;
+  right: 0;
+  top: -16px;
+  color: #A09FB1;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.content-card-weather {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 25px;
+  list-style: none;
+  padding-bottom: 10%;
+}
+
+.card-weather {
+  background-color: #1E213A;
+  padding: 20px;
+}
+
+.card-weather:last-child{
+  margin-right: 0;
+}
+
+.card-weather .content-icon {
+  height: 57px;
+  padding: 10px 0 25px;
+}
+
+.card-weather .icon-weather {
+  max-width: 57px;
+  height: auto;
+}
+
+.card-weather .content-max-min-temperature {
+  display: flex;
+  justify-content: space-between;
+}
+
+.min-temperature {
+  color: #A09FB1;
+}
+
+.subtitle {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+  padding-bottom: 5%;
+}
+
+.content-card-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 45px;
+  list-style: none;
+  padding-bottom: 50px;
+}
+
+.card-highlights {
+  background-color: #1E213A;
+  padding: 20px;
+}
+
+.card-highlights .measurement {
+  font-size: 35px;
+  color: #E7E7EB;
+  padding-bottom: 15px;
+}
+
+.content-wind {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: #E7E7EB;
+  padding: 10px 0 5px;
+}
+
+.icon-wind {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transform: rotate(45deg);
+  background-color: #585676;
+  margin-right: 8px;
+}
+
+.card-highlights .number {
+  font-size: 65px;
+  font-weight: bold;
+}
+
+.dev {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  color: #616475;
+}
+
+@media screen and (max-width: 1180px) {
+  .App {
+    flex-wrap: wrap;
+  } 
+
+  .aside {
+    width: 100%;
+  }
+
+  .content {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .content {
+    padding: 0 20px;
+  }
+
+  .content-card-weather {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px 25px;
+  }
+
+  .content-card-highlights {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 30px;
+  }
+}

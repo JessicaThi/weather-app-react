@@ -1,10 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import keys from './key';
 import './App.css';
 import showerIcon from "./assets/images/Shower.png";
 import snowIcon from "./assets/images/Snow.png";
 
+const api = {
+  key: keys.API_KEY,
+  base: keys.BASE_URL,
+};
+
 function App() {
   const [toggleOverlay, setToggleOverlay] = useState(false);
+  const [query, setQuery] = useState("Paris");
+  const [weather, setWeather] = useState({});
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+      .then((res) => res.json())
+      .then((result) => {
+        setSearch("");
+        setWeather(result);
+        console.log(result);
+      })
+  }, [query])
+
+  const dateBuild = (d) => {
+    let date = String(new window.Date());
+    date = date.slice(3, 15);
+    return date;
+  };
+
+  const execSearch = (e) => {
+    if (e.key === "Enter") {
+      setQuery(search);
+    }
+  };
 
   const closeOverlay = () => {
     setToggleOverlay(false)
@@ -23,7 +54,9 @@ function App() {
               <div onClick={() => closeOverlay()} className='button-close'><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12"></path></svg></div>
             </div>
             <div className="content-search">
-              <input className="input-search" placeholder='search location' />
+              <input className="input-search" type='text' placeholder='search location' onChange={(e) => setSearch(e.target.value)}
+                value={search}
+                onKeyPress={execSearch} />
               <button className="button-search">Search</button>
             </div>
           </div>
@@ -36,10 +69,10 @@ function App() {
           <img src={showerIcon} alt="icone weather of the day" />
         </div>
         <div className="content-info-weather-today">
-          <p className="temperature">15<span className="measurement">°C</span></p>
+          {weather && weather.main ? <p className="temperature">{Math.round(weather.main.temp)}<span className="measurement">°C</span></p> : ''}
           <p className="weather">Shower</p>
-          <p>Today ・ Fri, 5 Jun</p>
-          <p><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>Helsinki</p>
+          <p>Today ・ Fri, 5 Jun {dateBuild(new Date())}</p>
+          <p><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>{weather.name}</p>
         </div>
       </div>
       <div className="content">

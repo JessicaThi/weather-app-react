@@ -28,14 +28,15 @@
   - [Built With](#built-with)
 - [Features](#features)
 - [How to use](#how-to-use)
-- [Contact](#contact)
+- [Getting Started with Create React App](#Getting-Started-with-Create-React-App)
 - [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
 <!-- OVERVIEW -->
 
 ## Overview
 
-![screenshot](https://github.com/JessicaThi/weather-app-react/blob/main/src/assets/images/Clear.png)
+![screenshot](https://github.com/JessicaThi/weather-app-react/blob/main/src/assets/images/demo.png)
 
 Here you can see a screenshot of the project. Click on the link at the top or [here](https://weather-app-react-zeta.vercel.app/) to see the demo :) 
 

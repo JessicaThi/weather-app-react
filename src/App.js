@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import keys from './key';
 import './App.css';
 import ImageWeather from './components/ImageWeather';
 
 const api = {
-  key: keys.API_KEY,
-  base: keys.BASE_URL,
+  key: process.env.REACT_APP_API_KEY,
+  base: process.env.REACT_APP_BASE_URL,
 };
 
 function App() {
@@ -13,7 +12,7 @@ function App() {
   const [query, setQuery] = useState("Paris");
   const [weather, setWeather] = useState(null);
   const [search, setSearch] = useState("");
-  const [futurWeather, setFuturWeather] = useState("");
+  const [futureWeather, setFutureWeather] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -24,7 +23,7 @@ function App() {
       fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${result.coord.lat}&lon=${result.coord.lon}&exclude=hourly,minutely&units=metric&appid=${api.key}`)
         .then((res) => res.json())
         .then((result) => {
-          setFuturWeather(result);
+          setFutureWeather(result);
         })
     })()
   }, [query])
@@ -91,7 +90,7 @@ function App() {
             <button className="button button-round">°F</button>
           </div>
           <ul className="content-card-weather">
-            {futurWeather ? futurWeather.daily.slice(1, 6).map(day => (
+            {futureWeather ? futureWeather.daily.slice(1, 6).map(day => (
               <li className="card-weather">
                 <p>{dayWeek(day.dt)}</p>
                 <div className="content-icon">
